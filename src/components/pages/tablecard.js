@@ -2,12 +2,12 @@ import { Box, Card, Typography, Button } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
 
-function restaurantListingCard({obj}) {
-  const image='http://localhost:1337'+obj.images[0].url;
-  const name=obj.Name;
-  const address=obj.address;
-  const description=obj.description;
-  const id=obj.id;
+function TableCard({obj}) {
+//   const image='http://localhost:1337'+obj.images[0].url;
+//   const name=obj.Name;
+//   const address=obj.address;
+//   const description=obj.description;
+//   const id=obj.id;
   return (
     <>
       <Card>
@@ -18,14 +18,14 @@ function restaurantListingCard({obj}) {
             style={{
               //   backgroundColor: "red",
               minWidth: "35%",
-              backgroundImage: `url(${image})`,
+              //backgroundImage: `url(${image})`,
             }}
           ></Box>
           <Box w={1 / 2} p={2} height='auto' bgColor='secondary'>
             <Box display='flex' m={1}>
               <Typography variant='h3' align='left'>
                 {" "}
-                {name}
+                {/* {name} */}
               </Typography>
             </Box>
             <Box display='flex' m={1}>
@@ -55,10 +55,10 @@ function restaurantListingCard({obj}) {
               mt={1}
               mr={3}
             >
-              <Link to={'/detail?id='+id}>
+              <Link to={'/detail?id='}>
                 <Button color='primary' variant='contained'>
                   {" "}
-                  Details
+                  Booking
                 </Button>
               </Link>
             </Box>
@@ -69,4 +69,4 @@ function restaurantListingCard({obj}) {
   );
 }
 
-export default restaurantListingCard;
+export default TableCard;

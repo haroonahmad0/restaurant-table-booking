@@ -42,7 +42,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RecipeReviewCard() {
+export default function RecipeReviewCard({obj,isRecent}) {
+
+  const image_url='http://localhost:1337'+obj.images[0].url;
+  const name=obj.Name;
+  const address=obj.address;
+  const description=obj.description;
+  const id=obj.id;
+
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -63,22 +70,23 @@ export default function RecipeReviewCard() {
             <MoreVertIcon />
           </IconButton>
         }
-        title='Shrimp and Chorizo Paella'
-        subheader='September 14, 2016'
+        title={name}
+        
+          subheader={isRecent && localStorage.getItem(obj.id)} 
+        
+        
       />
-      <Link to='/restaurants'>
+      <Link to={'/detail?id='+id}>
         <CardMedia
           className={classes.media}
-          image={`${process.env.PUBLIC_URL}  /food.jpeg`}
+          image={image_url}
           title='Paella dish'
         />
       </Link>
       <CardContent>
-        <Link to='/restaurants' style={{ textDecoration: "none" }}>
+        <Link to={'/detail?id='+id} style={{ textDecoration: "none" }}>
           <Typography variant='body2' color='textSecondary' component='p'>
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
+                    {description}
           </Typography>
         </Link>
       </CardContent>
